@@ -5,7 +5,7 @@ const authHandler = {
     await Auth.create({
       userid: userdata._id,
       email: userdata.email,
-      password: await encpassword(passwordss),
+      password:encpassword(passwordss),
     });
     return true;
   },

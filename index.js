@@ -15,6 +15,9 @@ connectDB();
 const userRoute = require("./src/routes/loginrouter");
 app.use("/", userRoute);
 
+const eventRoute=require("./src/routes/eventRouter");
+app.use("/event",eventRoute);
+
 app.listen(PORT, (err) => {
   if (err) throw err;
   else console.log(`Server is run on ${PORT}`);
