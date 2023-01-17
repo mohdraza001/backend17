@@ -1,11 +1,13 @@
 const mongoose = require("mongoose");
 const eventSchema = new mongoose.Schema({
     threaterId: {
-        type: Number,
+        type: String,
+        unique:true,
         required: true,
     },
     name: {
         type: String,
+        required:true,
         unique: true,
     },
     language: {
@@ -19,6 +21,10 @@ const eventSchema = new mongoose.Schema({
     description:{
         type:String,
         required:true
+    },
+    artist:{
+      type:String,
+      required:false
     },
     startDate:{
       type:Date,

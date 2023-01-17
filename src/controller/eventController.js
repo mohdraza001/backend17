@@ -1,12 +1,17 @@
-const eventmodel=require('../model/EventModel')
+const eventModel=require('../model/EventModel')
+const endOfDay = require('date-fns/endOfDay')
+const startOfDay = require('date-fns/startOfDay')
 function postDataAdmin(req,res){
-
     console.log(req.body)
-    eventmodel.create({
+    eventModel.create({
         ...req.body,
-        startDate:new Date,
-        endDate:new Date
+        startDate:startOfDay(new Date()),
+        endDate:endOfDay(new Date())
     }).then(resa=>res.send(resa))
     .catch(err=>console.log(err))
 }
-module.exports={postDataAdmin}
+async function getDataevent(req,res){
+    let dataEvent= await eventModel.find()
+    res.status(200).json(dataEvent)
+}
+module.exports={postDataAdmin,getDataevent}
